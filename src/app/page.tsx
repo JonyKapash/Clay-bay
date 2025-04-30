@@ -1,103 +1,274 @@
 import Image from "next/image";
+import Link from "next/link";
+import Hero from "@/components/home/Hero";
+import CategoryNav from "@/components/home/CategoryNav";
+import ProductCard from "@/components/products/ProductCard";
+import ArtistCard from "@/components/artists/ArtistCard";
+import Newsletter from "@/components/home/Newsletter";
+import { ArrowRight } from "lucide-react";
+
+// Mock data for featured products - Updated with Pexels images
+const featuredProducts = [
+  {
+    id: "1",
+    title: "Minimalist Ceramic Vase",
+    description: "A handcrafted minimalist vase perfect for any modern home.",
+    price: 89.99,
+    images: [
+      "https://images.pexels.com/photos/2162938/pexels-photo-2162938.jpeg",
+    ],
+    category: "vases",
+    artistId: "1",
+    artistName: "Emma Chen",
+    createdAt: new Date(),
+    inStock: true,
+    featured: true,
+  },
+  {
+    id: "2",
+    title: "Stoneware Coffee Mug Set",
+    description: "Set of 2 handmade coffee mugs with natural glaze.",
+    price: 49.99,
+    images: [
+      "https://images.pexels.com/photos/3020919/pexels-photo-3020919.jpeg",
+    ],
+    category: "mugs",
+    artistId: "2",
+    artistName: "David Kim",
+    createdAt: new Date(),
+    inStock: true,
+    featured: true,
+  },
+  {
+    id: "4",
+    title: "Modern Ceramic Planter",
+    description: "Contemporary design planter perfect for succulents.",
+    price: 59.99,
+    images: [
+      "https://images.pexels.com/photos/1084188/pexels-photo-1084188.jpeg",
+    ],
+    category: "planters",
+    artistId: "1",
+    artistName: "Emma Chen",
+    createdAt: new Date(),
+    inStock: true,
+    featured: false,
+  },
+];
+
+// Mock data for featured artists - Updated with improved images
+const featuredArtists = [
+  {
+    id: "1",
+    userId: "user1",
+    name: "Emma Chen",
+    bio: "Specializing in minimalist ceramic designs inspired by nature.",
+    // Updated Emma's profile image to better match a ceramicist
+    profileImage:
+      "https://images.pexels.com/photos/7225206/pexels-photo-7225206.jpeg",
+    coverImage:
+      "https://cdn.pixabay.com/photo/2013/10/16/22/38/clay-figure-196527_960_720.jpg",
+    location: "Portland, OR",
+    verified: true,
+    featured: true,
+    specialties: ["Vases", "Planters"],
+    memberSince: new Date("2021-03-15"),
+  },
+  {
+    id: "2",
+    userId: "user2",
+    name: "David Kim",
+    bio: "Creating functional pottery with Asian-inspired glazes.",
+    profileImage:
+      "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg",
+    coverImage:
+      "https://images.pexels.com/photos/1493926/pexels-photo-1493926.jpeg",
+    location: "Seattle, WA",
+    verified: true,
+    featured: true,
+    specialties: ["Mugs", "Tableware"],
+    memberSince: new Date("2020-11-22"),
+  },
+  {
+    id: "3",
+    userId: "user3",
+    name: "Sara Johnson",
+    bio: "Contemporary ceramic artist focusing on sculptural forms.",
+    // Updated Sara's profile image to better match a ceramicist
+    profileImage:
+      "https://images.pexels.com/photos/8100784/pexels-photo-8100784.jpeg",
+    coverImage:
+      "https://images.pexels.com/photos/2162938/pexels-photo-2162938.jpeg",
+    location: "Austin, TX",
+    verified: true,
+    featured: true,
+    specialties: ["Sculptures", "Bowls"],
+    memberSince: new Date("2022-01-10"),
+  },
+];
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <>
+      <Hero />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* Featured Collection - Yaar-inspired section */}
+      <section className="py-16 bg-white">
+        <div className="container-wide">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-medium mb-4">
+              Featured Collection
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Explore our handpicked selection of beautiful ceramic pieces that
+              showcase the artistry and craftsmanship of our talented makers.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+            {featuredProducts.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link
+              href="/products"
+              className="btn-primary inline-flex items-center px-6 py-3 rounded-full"
+            >
+              View All Products <ArrowRight size={16} className="ml-2" />
+            </Link>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+
+      {/* Categories section - More visual approach */}
+      <CategoryNav />
+
+      {/* Our Values section - Similar to Yaar's about section */}
+      <section className="py-16 bg-secondary-light">
+        <div className="container-wide">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-16 items-center">
+            <div className="relative h-[500px] rounded-lg overflow-hidden shadow-lg">
+              <Image
+                src="https://images.pexels.com/photos/3094035/pexels-photo-3094035.jpeg"
+                alt="Ceramicist working on pottery"
+                fill
+                className="object-cover"
+              />
+            </div>
+
+            <div>
+              <h2 className="text-2xl md:text-3xl font-medium mb-6">
+                Handcrafted with Passion
+              </h2>
+              <p className="mb-6 text-gray-600">
+                Every piece in our marketplace is handcrafted by skilled
+                artisans who pour their heart and soul into their work. From
+                throwing the clay on the wheel to the final glaze firing, each
+                step is done with meticulous attention to detail.
+              </p>
+              <p className="mb-6 text-gray-600">
+                By supporting these artists, you're not just buying a beautiful
+                object—you're investing in craftsmanship, tradition, and the
+                future of ceramic arts.
+              </p>
+
+              <div className="grid grid-cols-2 gap-4 mb-8">
+                <div className="bg-white p-4 rounded-lg shadow">
+                  <h3 className="font-medium text-lg mb-2">Sustainable</h3>
+                  <p className="text-sm text-gray-600">
+                    Eco-friendly practices and materials in all our pieces.
+                  </p>
+                </div>
+                <div className="bg-white p-4 rounded-lg shadow">
+                  <h3 className="font-medium text-lg mb-2">Handmade</h3>
+                  <p className="text-sm text-gray-600">
+                    Crafted with love and attention to every detail.
+                  </p>
+                </div>
+              </div>
+
+              <Link
+                href="/about"
+                className="btn-primary inline-flex items-center px-6 py-3 rounded-full"
+              >
+                Our Story <ArrowRight size={18} className="ml-2" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Artists */}
+      <section className="py-16 bg-white">
+        <div className="container-wide">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-medium mb-4">
+              Meet Our Ceramic Artists
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Discover the talented makers behind our beautiful collection of
+              handcrafted ceramics.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {featuredArtists.map((artist) => (
+              <ArtistCard key={artist.id} artist={artist} />
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link
+              href="/artists"
+              className="btn-secondary inline-flex items-center px-6 py-3 rounded-full border border-primary"
+            >
+              View All Artists <ArrowRight size={16} className="ml-2" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Instagram-like gallery section - Updated first image */}
+      <section className="py-12 bg-secondary-light">
+        <div className="container-wide">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl font-medium">Follow Our Journey</h2>
+            <p className="text-gray-600">@claybay_ceramics</p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+            {/* Updated the first gallery image */}
+            <div className="aspect-square relative rounded-lg overflow-hidden hover-elevate">
+              <Image
+                src="https://images.pexels.com/photos/5606020/pexels-photo-5606020.jpeg"
+                alt="Gallery ceramic image"
+                fill
+                className="object-cover"
+              />
+            </div>
+            {/* Keep the remaining gallery images */}
+            {[2, 3, 4].map((i) => (
+              <div
+                key={i}
+                className="aspect-square relative rounded-lg overflow-hidden hover-elevate"
+              >
+                <Image
+                  src={`https://images.pexels.com/photos/${
+                    4990000 + i
+                  }/pexels-photo-${4990000 + i}.jpeg`}
+                  alt="Gallery image"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <Newsletter />
+    </>
   );
 }
