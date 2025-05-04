@@ -146,61 +146,79 @@ export default function Home() {
       <CategoryNav />
 
       {/* Our Values section - Similar to Yaar's about section */}
-      <section className="py-16 bg-secondary-light">
+      <section className="py-16 bg-secondary">
         <div className="container-wide">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-16 items-center">
-            <div className="relative h-[500px] rounded-lg overflow-hidden shadow-lg">
-              <Image
-                src="https://images.pexels.com/photos/3094035/pexels-photo-3094035.jpeg"
-                alt="Ceramicist working on pottery"
-                fill
-                className="object-cover"
-              />
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-medium mb-4">
+              Our Values
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              At ClayBay, we believe in supporting artists, promoting
+              sustainable craftsmanship, and bringing beautiful handmade
+              ceramics into your everyday life.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="p-6 bg-white rounded-lg shadow-sm hover-elevate">
+              <div className="w-12 h-12 bg-primary-light rounded-full flex items-center justify-center mb-4 mx-auto">
+                <Image
+                  src="/icons/community.svg"
+                  alt="Community"
+                  width={28}
+                  height={28}
+                />
+              </div>
+              <h3 className="text-lg font-medium text-center mb-2">
+                Artist Community
+              </h3>
+              <p className="text-gray-600 text-center">
+                We support a thriving community of ceramic artists, providing
+                them with a platform to showcase and sell their unique
+                creations.
+              </p>
             </div>
 
-            <div>
-              <h2 className="text-2xl md:text-3xl font-medium mb-6">
-                Handcrafted with Passion
-              </h2>
-              <p className="mb-6 text-gray-600">
-                Every piece in our marketplace is handcrafted by skilled
-                artisans who pour their heart and soul into their work. From
-                throwing the clay on the wheel to the final glaze firing, each
-                step is done with meticulous attention to detail.
-              </p>
-              <p className="mb-6 text-gray-600">
-                By supporting these artists, you're not just buying a beautiful
-                object—you're investing in craftsmanship, tradition, and the
-                future of ceramic arts.
-              </p>
-
-              <div className="grid grid-cols-2 gap-4 mb-8">
-                <div className="bg-white p-4 rounded-lg shadow">
-                  <h3 className="font-medium text-lg mb-2">Sustainable</h3>
-                  <p className="text-sm text-gray-600">
-                    Eco-friendly practices and materials in all our pieces.
-                  </p>
-                </div>
-                <div className="bg-white p-4 rounded-lg shadow">
-                  <h3 className="font-medium text-lg mb-2">Handmade</h3>
-                  <p className="text-sm text-gray-600">
-                    Crafted with love and attention to every detail.
-                  </p>
-                </div>
+            <div className="p-6 bg-white rounded-lg shadow-sm hover-elevate">
+              <div className="w-12 h-12 bg-primary-light rounded-full flex items-center justify-center mb-4 mx-auto">
+                <Image
+                  src="/icons/sustainability.svg"
+                  alt="Sustainability"
+                  width={28}
+                  height={28}
+                />
               </div>
+              <h3 className="text-lg font-medium text-center mb-2">
+                Sustainable Practices
+              </h3>
+              <p className="text-gray-600 text-center">
+                We're committed to environmentally friendly practices,
+                sustainable materials, and reducing waste in ceramic production.
+              </p>
+            </div>
 
-              <Link
-                href="/about"
-                className="btn-primary inline-flex items-center px-6 py-3 rounded-full"
-              >
-                Our Story <ArrowRight size={18} className="ml-2" />
-              </Link>
+            <div className="p-6 bg-white rounded-lg shadow-sm hover-elevate">
+              <div className="w-12 h-12 bg-primary-light rounded-full flex items-center justify-center mb-4 mx-auto">
+                <Image
+                  src="/icons/handcrafted.svg"
+                  alt="Handcrafted"
+                  width={28}
+                  height={28}
+                />
+              </div>
+              <h3 className="text-lg font-medium text-center mb-2">
+                Handcrafted Quality
+              </h3>
+              <p className="text-gray-600 text-center">
+                Every piece in our collection is carefully handcrafted with
+                attention to detail, ensuring quality and uniqueness.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Featured Artists */}
+      {/* Featured artists section */}
       <section className="py-16 bg-white">
         <div className="container-wide">
           <div className="text-center mb-12">
@@ -231,43 +249,102 @@ export default function Home() {
       </section>
 
       {/* Instagram-like gallery section - Updated first image */}
-      <section className="py-12 bg-secondary-light">
+      <section className="py-16 bg-white border-t border-secondary-dark">
         <div className="container-wide">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl font-medium">Follow Our Journey</h2>
-            <p className="text-gray-600">@claybay_ceramics</p>
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-medium mb-4">
+              #CeramicLife
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Follow us on Instagram @claybay and tag your photos with
+              #CeramicLife to be featured in our gallery.
+            </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-            {/* Updated the first gallery image */}
-            <div className="aspect-square relative rounded-lg overflow-hidden hover-elevate">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            {/* Gallery images */}
+            <div className="relative aspect-square overflow-hidden group">
               <Image
-                src="https://images.pexels.com/photos/5606020/pexels-photo-5606020.jpeg"
-                alt="Gallery ceramic image"
+                src="https://images.pexels.com/photos/3094033/pexels-photo-3094033.jpeg"
+                alt="Ceramic gallery"
                 fill
-                className="object-cover"
+                className="object-cover group-hover:scale-110 transition-transform duration-500"
               />
-            </div>
-            {/* Keep the remaining gallery images */}
-            {[2, 3, 4].map((i) => (
-              <div
-                key={i}
-                className="aspect-square relative rounded-lg overflow-hidden hover-elevate"
-              >
-                <Image
-                  src={`https://images.pexels.com/photos/${
-                    4990000 + i
-                  }/pexels-photo-${4990000 + i}.jpeg`}
-                  alt="Gallery image"
-                  fill
-                  className="object-cover"
-                />
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                <p className="text-white font-medium">@emma_chen</p>
               </div>
-            ))}
+            </div>
+            <div className="relative aspect-square overflow-hidden group">
+              <Image
+                src="https://images.pexels.com/photos/4992463/pexels-photo-4992463.jpeg"
+                alt="Ceramic gallery"
+                fill
+                className="object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                <p className="text-white font-medium">@clay_studio</p>
+              </div>
+            </div>
+            <div className="relative aspect-square overflow-hidden group">
+              <Image
+                src="https://images.pexels.com/photos/3094035/pexels-photo-3094035.jpeg"
+                alt="Ceramic gallery"
+                fill
+                className="object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                <p className="text-white font-medium">@pottery_life</p>
+              </div>
+            </div>
+            <div className="relative aspect-square overflow-hidden group">
+              <Image
+                src="https://images.pexels.com/photos/4993325/pexels-photo-4993325.jpeg"
+                alt="Ceramic gallery"
+                fill
+                className="object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                <p className="text-white font-medium">@david_kim</p>
+              </div>
+            </div>
+            <div className="relative aspect-square overflow-hidden group">
+              <Image
+                src="https://images.pexels.com/photos/4992651/pexels-photo-4992651.jpeg"
+                alt="Ceramic gallery"
+                fill
+                className="object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                <p className="text-white font-medium">@ceramic_dreams</p>
+              </div>
+            </div>
+            <div className="relative aspect-square overflow-hidden group">
+              <Image
+                src="https://images.pexels.com/photos/4993347/pexels-photo-4993347.jpeg"
+                alt="Ceramic gallery"
+                fill
+                className="object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                <p className="text-white font-medium">@sara_johnson</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center mt-8">
+            <Link
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary-dark hover:text-primary font-medium"
+            >
+              View more on Instagram <ArrowRight size={16} className="inline" />
+            </Link>
           </div>
         </div>
       </section>
 
+      {/* Newsletter section */}
       <Newsletter />
     </>
   );

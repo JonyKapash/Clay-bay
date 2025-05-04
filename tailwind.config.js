@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: ["class"],
   content: [
     "./src/app/**/*.{js,ts,jsx,tsx}",
     "./src/components/**/*.{js,ts,jsx,tsx}",
@@ -8,31 +9,64 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          light: "#E6C9BB", // Soft terracotta
-          DEFAULT: "#D4A491", // Medium clay
-          dark: "#B47F6B", // Deep clay
+          light: "#E6C9BB",
+          DEFAULT: "hsl(var(--primary))",
+          dark: "#B47F6B",
+          foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
-          light: "#F9F5F2", // Warm off-white
-          DEFAULT: "#F2EAE4", // Clay-tinted white
-          dark: "#E8DFD8", // Soft beige
+          light: "#F9F5F2",
+          DEFAULT: "hsl(var(--secondary))",
+          dark: "#E8DFD8",
+          foreground: "hsl(var(--secondary-foreground))",
         },
         text: {
-          DEFAULT: "#433A36", // Warm dark brown
-          light: "#FFFFFF", // White
+          DEFAULT: "#433A36",
+          light: "#FFFFFF",
         },
         accent: {
-          success: "#85A68E", // Sage green
-          error: "#D17F6E", // Terra cotta red
-          warning: "#DEB876", // Warm gold/ochre
-          blue: "#A6BBD1", // Soft ceramic blue
-          sage: "#C0CEB2", // Light sage green
+          success: "#85A68E",
+          error: "#D17F6E",
+          warning: "#DEB876",
+          blue: "#A6BBD1",
+          sage: "#C0CEB2",
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        chart: {
+          1: "hsl(var(--chart-1))",
+          2: "hsl(var(--chart-2))",
+          3: "hsl(var(--chart-3))",
+          4: "hsl(var(--chart-4))",
+          5: "hsl(var(--chart-5))",
         },
       },
       borderRadius: {
-        sm: "4px",
+        sm: "calc(var(--radius) - 4px)",
         DEFAULT: "8px",
-        lg: "12px",
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
       },
       spacing: {
         1: "4px",
@@ -63,5 +97,5 @@ module.exports = {
       xl: "1280px",
     },
   },
-  plugins: [require("tailwind-scrollbar-hide")],
+  plugins: [require("tailwind-scrollbar-hide"), require("tailwindcss-animate")],
 };
