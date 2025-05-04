@@ -28,8 +28,8 @@ export default function ProductCard({ product }: ProductCardProps) {
           </AspectRatio>
 
           <button
-            aria-label="Add to wishlist"
-            className="absolute top-4 right-4 bg-white/80 p-2 rounded-full shadow-sm hover:bg-white transition-colors"
+            aria-label="הוסף למועדפים"
+            className="absolute top-4 left-4 bg-white/80 p-2 rounded-full shadow-sm hover:bg-white transition-colors"
           >
             <Heart size={18} className="text-gray-600" />
           </button>
@@ -37,9 +37,9 @@ export default function ProductCard({ product }: ProductCardProps) {
           {product.featured && (
             <Badge
               variant="secondary"
-              className="absolute top-4 left-4 bg-accent-warning text-text"
+              className="absolute top-4 right-4 bg-accent-warning text-text"
             >
-              Featured
+              מומלץ
             </Badge>
           )}
         </div>
@@ -54,7 +54,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         </Link>
 
         <p className="text-sm text-gray-600 mt-1 w-full">
-          by{" "}
+          מאת{" "}
           <Link
             href={`/products/artist/${product.artistId}`}
             className="hover:text-primary-dark"
@@ -63,7 +63,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           </Link>
         </p>
 
-        <p className="font-medium mt-2">${product.price.toFixed(2)}</p>
+        <p className="font-medium mt-2">{product.price.toFixed(2)} ₪</p>
       </CardFooter>
     </Card>
   );

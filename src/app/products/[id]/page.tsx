@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, Heart, ShoppingBag, Info } from "lucide-react";
+import { ArrowRight, Heart, ShoppingBag, Info } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
@@ -75,18 +75,16 @@ export default function ProductDetailPage({
         <Card className="max-w-2xl mx-auto">
           <CardContent className="p-8 text-center">
             <Info className="w-16 h-16 text-accent-error mx-auto mb-6" />
-            <h2 className="text-2xl font-medium mb-2">
-              Oops! Something went wrong
-            </h2>
+            <h2 className="text-2xl font-medium mb-2">אופס! משהו השתבש</h2>
             <p className="text-gray-600 mb-6">
               {error instanceof Error
                 ? error.message
-                : "Failed to load product"}
+                : "לא ניתן היה לטעון את המוצר"}
             </p>
             <Button asChild variant="default">
               <Link href="/products">
-                <ArrowLeft size={16} className="mr-2" />
-                Back to All Products
+                <ArrowRight size={16} className="ml-2" />
+                חזרה לכל המוצרים
               </Link>
             </Button>
           </CardContent>
@@ -102,14 +100,14 @@ export default function ProductDetailPage({
         <Card className="max-w-2xl mx-auto">
           <CardContent className="p-8 text-center">
             <Info className="w-16 h-16 text-accent-error mx-auto mb-6" />
-            <h2 className="text-2xl font-medium mb-2">Product Not Found</h2>
+            <h2 className="text-2xl font-medium mb-2">המוצר לא נמצא</h2>
             <p className="text-gray-600 mb-6">
-              We couldn't find the product you're looking for.
+              לא הצלחנו למצוא את המוצר שחיפשת.
             </p>
             <Button asChild variant="default">
               <Link href="/products">
-                <ArrowLeft size={16} className="mr-2" />
-                Back to All Products
+                <ArrowRight size={16} className="ml-2" />
+                חזרה לכל המוצרים
               </Link>
             </Button>
           </CardContent>
@@ -121,12 +119,12 @@ export default function ProductDetailPage({
   const product = data.product;
 
   return (
-    <div className="container-wide py-12 mt-12">
+    <div className="container-wide pt-24 pb-12 mt-0">
       {/* Back button */}
       <Button variant="ghost" size="sm" className="mb-8" asChild>
         <Link href={`/products/artist/${product.artistId}`}>
-          <ArrowLeft size={16} className="mr-2" />
-          Back to Artist Products
+          <ArrowRight size={16} className="ml-2" />
+          חזרה למוצרי האמן
         </Link>
       </Button>
 
@@ -146,9 +144,9 @@ export default function ProductDetailPage({
             {product.featured && (
               <Badge
                 variant="secondary"
-                className="absolute top-4 left-4 bg-accent-warning text-text"
+                className="absolute top-4 right-4 bg-accent-warning text-text"
               >
-                Featured
+                מומלץ
               </Badge>
             )}
           </div>
@@ -168,7 +166,7 @@ export default function ProductDetailPage({
                 >
                   <Image
                     src={image}
-                    alt={`${product.title} - Image ${index + 1}`}
+                    alt={`${product.title} - תמונה ${index + 1}`}
                     fill
                     className="object-cover"
                   />
@@ -182,7 +180,7 @@ export default function ProductDetailPage({
         <div className="w-full lg:w-1/2">
           <h1 className="text-3xl font-medium mb-2">{product.title}</h1>
           <p className="text-gray-600 mb-6">
-            by{" "}
+            מאת{" "}
             <Link
               href={`/products/artist/${product.artistId}`}
               className="text-primary-dark hover:underline"
@@ -192,7 +190,7 @@ export default function ProductDetailPage({
           </p>
 
           <p className="text-2xl font-medium mb-6">
-            ${product.price.toFixed(2)}
+            {product.price.toFixed(2)} ₪
           </p>
 
           <div className="prose max-w-full mb-8">
@@ -201,28 +199,28 @@ export default function ProductDetailPage({
 
           {/* Product details */}
           <div className="mb-8">
-            <h3 className="text-lg font-medium mb-3">Details</h3>
+            <h3 className="text-lg font-medium mb-3">פרטים</h3>
             <div className="grid grid-cols-2 gap-y-2 text-sm">
-              <div className="text-gray-600">Category</div>
+              <div className="text-gray-600">קטגוריה</div>
               <div>{product.category}</div>
 
-              {product.material && (
+              {product.materials && (
                 <>
-                  <div className="text-gray-600">Material</div>
-                  <div>{product.material.join(", ")}</div>
+                  <div className="text-gray-600">חומרים</div>
+                  <div>{product.materials.join(", ")}</div>
                 </>
               )}
 
               {product.technique && (
                 <>
-                  <div className="text-gray-600">Technique</div>
+                  <div className="text-gray-600">טכניקה</div>
                   <div>{product.technique.join(", ")}</div>
                 </>
               )}
 
               {product.dimensions && (
                 <>
-                  <div className="text-gray-600">Dimensions</div>
+                  <div className="text-gray-600">מידות</div>
                   <div>
                     {product.dimensions.height} × {product.dimensions.width}
                     {product.dimensions.depth
@@ -235,28 +233,27 @@ export default function ProductDetailPage({
 
               {product.weight && (
                 <>
-                  <div className="text-gray-600">Weight</div>
+                  <div className="text-gray-600">משקל</div>
                   <div>
                     {product.weight.value} {product.weight.unit}
                   </div>
                 </>
               )}
 
-              <div className="text-gray-600">In Stock</div>
-              <div>{product.inStock ? "Yes" : "No"}</div>
+              <div className="text-gray-600">במלאי</div>
+              <div>{product.inStock ? "כן" : "לא"}</div>
             </div>
           </div>
 
           {/* Action buttons */}
-          <div className="flex flex-col space-y-4">
-            <Button className="w-full bg-primary hover:bg-primary-dark text-white">
-              <ShoppingBag size={18} className="mr-2" />
-              Add to Cart
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <Button className="flex-1">
+              <ShoppingBag size={18} className="ml-2" />
+              הוסף לסל הקניות
             </Button>
-
-            <Button variant="outline" className="w-full border-gray-300">
-              <Heart size={18} className="mr-2" />
-              Add to Wishlist
+            <Button variant="outline" className="flex-1">
+              <Heart size={18} className="ml-2" />
+              שמור למועדפים
             </Button>
           </div>
         </div>
@@ -266,23 +263,13 @@ export default function ProductDetailPage({
       {relatedProducts.length > 0 && (
         <div className="mt-16">
           <Separator className="mb-8" />
-
           <h2 className="text-2xl font-medium mb-8">
-            More by {product.artistName}
+            עוד מוצרים מאת {product.artistName}
           </h2>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {relatedProducts.slice(0, 4).map((relatedProduct) => (
-              <ProductCard key={relatedProduct.id} product={relatedProduct} />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {relatedProducts.map((product) => (
+              <ProductCard key={product.id} product={product} />
             ))}
-          </div>
-
-          <div className="text-center mt-8">
-            <Button asChild variant="outline">
-              <Link href={`/products/artist/${product.artistId}`}>
-                View All Products by {product.artistName}
-              </Link>
-            </Button>
           </div>
         </div>
       )}

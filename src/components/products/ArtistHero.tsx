@@ -14,7 +14,7 @@ export default function ArtistHero({ artist }: ArtistHeroProps) {
       <div className="relative h-48 md:h-64 w-full overflow-hidden rounded-lg">
         <Image
           src={artist.coverImage || artist.profileImage}
-          alt={`${artist.name}'s work`}
+          alt={`העבודות של ${artist.name}`}
           fill
           className="object-cover"
           priority
@@ -25,7 +25,7 @@ export default function ArtistHero({ artist }: ArtistHeroProps) {
       {/* Artist info with profile image */}
       <div className="container-wide">
         <div className="flex flex-col md:flex-row items-start md:items-end -mt-16 md:-mt-20 relative z-10">
-          <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-white shadow-lg mb-4 md:mb-0 md:mr-6">
+          <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-white shadow-lg mb-4 md:mb-0 md:ml-6">
             <Image
               src={artist.profileImage}
               alt={artist.name}
@@ -43,7 +43,7 @@ export default function ArtistHero({ artist }: ArtistHeroProps) {
               {artist.verified && (
                 <CheckCircle
                   size={20}
-                  className="ml-2 text-primary-dark"
+                  className="mr-2 text-primary-dark"
                   fill="white"
                   strokeWidth={0}
                 />
@@ -60,7 +60,7 @@ export default function ArtistHero({ artist }: ArtistHeroProps) {
           {/* Specialties */}
           {artist.specialties && artist.specialties.length > 0 && (
             <div className="mt-4">
-              <p className="text-sm font-medium mb-2">Specialties:</p>
+              <p className="text-sm font-medium mb-2">התמחויות:</p>
               <div className="flex flex-wrap gap-2">
                 {artist.specialties.map((specialty, index) => (
                   <span

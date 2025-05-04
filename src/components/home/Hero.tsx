@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
 export default function Hero() {
   return (
@@ -11,7 +11,7 @@ export default function Hero() {
       {/* Updated hero image with Pixabay image */}
       <Image
         src="https://cdn.pixabay.com/photo/2019/11/18/20/35/sound-4635713_1280.jpg"
-        alt="Ceramic pottery collection"
+        alt="אוסף כלי קרמיקה"
         fill
         style={{ objectFit: "cover" }}
         priority
@@ -21,13 +21,12 @@ export default function Hero() {
       <div className="container-wide h-full flex flex-col justify-center relative z-20 text-white">
         <div className="max-w-xl">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-light mb-4 leading-tight">
-            <span className="font-bold">Ceramics</span> <br />
-            Handcrafted with Love
+            <span className="font-bold">קרמיקה</span> <br />
+            בעבודת יד באהבה
           </h1>
 
           <p className="text-lg md:text-xl mb-8 text-white/90">
-            Discover unique ceramic pieces created by talented artists from
-            around the world.
+            גלו פריטי קרמיקה ייחודיים שנוצרו על ידי אמנים מוכשרים מכל העולם.
           </p>
 
           <div className="flex flex-wrap gap-4">
@@ -35,14 +34,14 @@ export default function Hero() {
               href="/products"
               className="bg-white text-primary-dark hover:bg-white/90 px-8 py-4 rounded-full font-medium transition-all inline-flex items-center"
             >
-              Shop Collection <ArrowRight size={18} className="ml-2" />
+              לחנות <ArrowLeft size={18} className="me-2" />
             </Link>
 
             <Link
               href="/artists"
               className="bg-transparent border border-white hover:bg-white/10 px-8 py-4 rounded-full font-medium transition-all"
             >
-              Meet the Artists
+              להכיר את האמנים
             </Link>
           </div>
         </div>

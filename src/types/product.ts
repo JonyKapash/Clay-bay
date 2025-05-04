@@ -19,6 +19,7 @@ export interface Product {
     unit: "g" | "kg" | "oz" | "lb";
   };
   material?: string[];
+  materials?: string[];
   technique?: string[];
   inStock: boolean;
   featured?: boolean;
